@@ -7,3 +7,9 @@ services:
     build: ./app
     ports:
       - 3000:3000
+  
+  api:
+    container_name: api
+    build: ./api
+    ports:
+      - 3001:3001
