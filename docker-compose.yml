@@ -11,8 +11,12 @@ services:
   api:
     container_name: api
     build: ./api
+    depends_on:
+      - db
     ports:
       - 3001:3001
+    env_file:
+      - .env  
 
   db:
     container_name: db
@@ -23,6 +27,17 @@ services:
       - .env
     volumes:
       - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+  
+  db-setup:
+    container_name: db-setup
+    build: ./db
+    depends_on:
+      - db
+    env_file:
+      - .env
+    volumes:
+      - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+      
 
 volumes:
   database-data: # named volumes can be managed easier using docker-compose
