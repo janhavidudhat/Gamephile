@@ -12,3 +12,5 @@ RUN npm install --silent
 
 # start app
 CMD ["npm", "start"]
+
+# CMD ["npx", "prisma", "generate"]
