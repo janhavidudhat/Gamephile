@@ -14,4 +14,20 @@ async function registerUser(email, name, password) {
     //   const users = await prisma.user.findMany()
 }
 
-module.exports = registerUser;
+async function successfullyLoginUser(email, password) {
+    console.log("Got this request to login user:");
+    console.log(email);
+    const user = await prisma.user.findUnique({
+        where: {
+            email : email,
+            password : password,
+        }
+    });
+
+    if (user) return true;
+
+    return false;
+    //   const users = await prisma.user.findMany()
+}
+
+module.exports = registerUser, successfullyLoginUser;

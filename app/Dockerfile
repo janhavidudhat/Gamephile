@@ -8,8 +8,7 @@ WORKDIR ./app
 COPY . ./
 
 # install app dependencies
-RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
+RUN npm install
 
 # start app
 CMD ["npm", "start"]
